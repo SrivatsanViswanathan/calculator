@@ -1,0 +1,47 @@
+/* Default */
+
+/* Default */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 150vh;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.header {
+    display: flex;
+    background-color: #333;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3%;
+    flex: 1;
+}
+
+.footer {
+    display: flex;
+    height: 50px;
+    background-color: #333;
+}
+
+/* Header */
+.header-container {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+/* Body */
+
+/* Footer */
+.footer-container {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
