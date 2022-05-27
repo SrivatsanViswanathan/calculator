@@ -28,6 +28,12 @@ function getValues() {
                 displayText.textContent = '';
             }
             else {
+                if (display === '-_- Really Bruh -_-') {
+                    num1 = num2 = operator = operation = display = '';
+                    counter1 = counter3 = false;
+                    counter2 = true;
+                    displayText.textContent = '';
+                }
                 if (e.target.classList.contains('delete-recent')) {
                     if (counter1 === false) { 
                         num1 = num1.slice(0, (num1.length - 1));
