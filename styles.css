@@ -89,7 +89,12 @@ body {
 }
 
 .button:hover {
-    background-color: gray;
+    background-color: gray; 
+}
+
+.button:active {
+    transform: scale(0.95);
+    background-color: rgb(70, 70, 70);
 }
 
 .button.special {
