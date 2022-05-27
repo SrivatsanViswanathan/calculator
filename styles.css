@@ -8,7 +8,7 @@ body {
     height: 100vh;
     max-height: 150vh;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: lightgray;
+    background-color: #e5e5e5;
 }
 
 .header {
@@ -37,6 +37,7 @@ body {
 
 /* Body */
 .body-container {
+    margin: 1%;
     display: flex;
     flex: 1;
     justify-content: center;
@@ -47,6 +48,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: black;
+    border: 15px solid gray;
 }
 
 .display {
@@ -56,6 +58,7 @@ body {
     align-items: flex-end;
     color: white;
     padding-right: 3%;
+    font-size: 150%;
 }
 
 .calc-buttons {
@@ -76,14 +79,14 @@ body {
 .button {
     width: 80px;
     height: 80px;
-    font-size: 125%;
+    font-size: 175%;
     border: none;
     border-radius: 50%;
     margin: 5px 5px 5px 5px;
     color: white;
     background-color: rgb(50, 50, 50);
     cursor: pointer;
-}   
+}
 
 .button:hover {
     background-color: gray;
