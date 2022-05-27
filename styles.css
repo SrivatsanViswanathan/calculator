@@ -63,7 +63,7 @@ body {
 
 .calc-buttons {
     margin-top: 0.5%;
-    border-top: 1px solid gray;
+    border-top: 1.5px dashed greenyellow;
     width: 100%;
     height: auto;
 }
