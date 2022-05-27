@@ -20,40 +20,39 @@
     <div class="body" id="body">
         <div class="body-container" id="body-container">
             <div class="calculator">
-                <div class="display" id="display">1 + 1 = 3</div>
-                <div class="buttons" id="buttons">
+                <div class="display" id="display"></div>
+                <div class="calc-buttons" id="calc-buttons">
                     <div class="row">
-                        <button class="operation delete">C</button>
-                        <button class="operation delete">AC</button>
-                        <button class="operation calculate">x<sup>y</sup></button>  
-                        <button class="operation calculate">&#247;</button>
+                        <button class="button operation delete-recent">C</button>
+                        <button class="button operation delete-all">AC</button>
+                        <button value="power" class="button operation power">x<sup>y</sup></button>  
+                        <button value="divide" class="button operation">&#247;</button>
                     </div>
                     <div class="row">
-                        <button class="operation">7</button>
-                        <button class="operation">8</button>
-                        <button class="operation">9</button>
-                        <button class="operation calculate">&#xd7;</button>
+                        <button class="button number">7</button>
+                        <button class="button number">8</button>
+                        <button class="button number">9</button>
+                        <button value="multiply" class="button operation">&#xd7;</button>
                     </div>
                     <div class="row">
-                        <button class="operation">4</button>
-                        <button class="operation">5</button>
-                        <button class="operation">6</button>
-                        <button class="operation calculate">&#x2212;</button>
+                        <button class="button number">4</button>
+                        <button class="button number">5</button>
+                        <button class="button number">6</button>
+                        <button value="subtract" class="button operation">&#x2212;</button>
                     </div>
                     <div class="row">
-                        <button class="operation">1</button>
-                        <button class="operation">2</button>
-                        <button class="operation">3</button>
-                        <button class="operation calculate">&#x2b;</button>
+                        <button class="button number">1</button>
+                        <button class="button number">2</button>
+                        <button class="button number">3</button>
+                        <button value="add" class="button operation">&#x2b;</button>
                     </div>
                     <div class="row">
-                        <button class="operation">+/-</button>
-                        <button class="operation">0</button>
-                        <button class="operation">.</button>
-                        <button class="operation calculate">&#x3d;</button>
+                        <button value= "minus" class="button operation minus">+/-</button>
+                        <button class="button number">0</button>
+                        <button class="button number">.</button>
+                        <button value="equals" class="button calculate">&#x3d;</button>
                     </div>
                 </div>
-                <div></div>
             </div>
         </div>
     </div>

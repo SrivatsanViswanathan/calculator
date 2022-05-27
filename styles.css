@@ -54,9 +54,10 @@ body {
     justify-content: right;
     align-items: flex-end;
     color: white;
+    padding-right: 3%;
 }
 
-.buttons {
+.calc-buttons {
     margin-top: 0.5%;
     border-top: 1px solid gray;
     width: 100%;
@@ -71,7 +72,7 @@ body {
     justify-content: space-between;
 }
 
-.calculator .operation {
+.button {
     width: 80px;
     height: 80px;
     font-size: 125%;
@@ -83,15 +84,15 @@ body {
     cursor: pointer;
 }   
 
-.operation:hover {
+.button:hover {
     background-color: gray;
 }
 
-.operation.calculate {
+.button.calculate {
     color: greenyellow;
 }
 
-.operation.delete {
+.button.delete-all, .button.delete-recent {
     color: red;
 }
 
