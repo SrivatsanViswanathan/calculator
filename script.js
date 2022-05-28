@@ -170,9 +170,6 @@ function operate(operation, operator, num1, num2) {
     else if (operation === 'divide') {
         answer = divide(num1, num2);
     }
-    else if (operation === 'power') {
-        answer = power(num1, num2);
-    }
     else {
         answer = 'Error.';
     }
@@ -201,22 +198,6 @@ function divide(num1, num2) {
         return answer;
     }
     let answer = num1 / num2;
-    return answer;
-}
-
-function power(num1, num2) {
-    let answer = 1;
-    if (num2 > 0) {
-        for (let i = 0; i < num2; i++) {
-            answer = answer * num1;
-        }
-    }
-    else {
-        for (let i = 0; i < num2 * -1; i++) {
-            answer = (answer * num1);
-        }
-        answer = 1 / answer;
-    }
     return answer;
 }
 
