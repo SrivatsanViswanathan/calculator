@@ -2,158 +2,146 @@
 
 const button = document.querySelectorAll('.button');
 const displayText = document.querySelector('#display');
+const numbers = document.querySelectorAll('.number');
+const operations = document.querySelectorAll('.operation');
 
 let num1 = '';
 let num2 = '';
-let operator = '';
+let numCheck = '';
 let operation = '';
-let display = '';
+let operationDisplay = '';
+let operationCalculation = 0;
+let displayString = '';
 
-getValues();
+buttonClicked();
 
-/* Get button values */
-function getValues() {
-    let counter1 = false;
-    let counter2 = true;
-    let counter3 = false;
+// Calculator button is clicked
+function buttonClicked() {
     button.forEach(element => {
-        element.addEventListener('click', function (e) {
-            num1 = num1.toString();
-            num2 = num2.toString();
-            display = display.toString();
-            if (e.target.classList.contains('delete-all')) {
-                num1 = num2 = operator = operation = display = '';
-                counter1 = counter3 = false;
-                counter2 = true;
-                displayText.textContent = '';
+        element.addEventListener('click', buttonsClicked);
+    })
+}
+
+// Go to appropriate function depending on type of button clicked
+function buttonsClicked(e) {
+    if (e.target.classList.contains('delete-all')) {
+        deleteAll();
+    }
+    else if (e.target.classList.contains('delete-recent')) {
+        deleteRecent();
+    }
+    else if (e.target.classList.contains('number')) {
+        addNumbers(e);
+    }
+    else if (e.target.classList.contains('operation')) {
+        addOperation(e);
+    }
+    else if (e.target.classList.contains('calculate')) {
+        calculate();
+    }
+    display(num1, num2, operationDisplay, operation);
+}
+
+// Start a new calculation fresh
+function deleteAll() {
+    num1 = num2 = '';
+    operation = operationDisplay = '';
+    displayString = '';
+    displayText.textContent = '';
+}
+
+// Delete most recent button pressed by user
+function deleteRecent() {
+    if (num2 != '') {
+        num2 = num2.slice(0, (num2.length - 1));
+    }
+    else if (operation != '') {
+        operationDisplay = operationDisplay.slice(0, (operationDisplay.length - 1));
+        operation = '';
+    }
+    else if (num1 != '') {
+        num1 = num1.slice(0, (num1.length - 1));
+    }
+}
+
+// Add numbers into number variables
+function addNumbers(e) {
+    if (operation === '') {
+        if (e.target.value === '.') {
+            if (!num1.includes('.')) {
+                num1 = num1 + e.target.value;
+            }
+        }
+        else {
+            if (num1.includes('-') && e.target.value === '-') {
+                num1 = num1.replace('-', '');
+            }
+            else if (!num1.includes('-') && e.target.value === '-') {
+                num1 = '-' + num1;
             }
             else {
-                if (display === '-_- Really Bruh -_-') {
-                    num1 = num2 = operator = operation = display = '';
-                    counter1 = counter3 = false;
-                    counter2 = true;
-                    displayText.textContent = '';
-                }
-                if (e.target.classList.contains('delete-recent')) {
-                    if (counter1 === false) { 
-                        num1 = num1.slice(0, (num1.length - 1));
-                        display = num1 + ' ' + operator + ' ' + num2;
-                    }
-                    else if (counter2 === false) {
-                        operator = operator.slice(0, (operator.length - 1));
-                        display = num1 + ' ' + operator + ' ' + num2;
-                        if (operator.length === 0) {
-                            counter1 = false;
-                        }
-                    }
-                    else if (counter3 === false) {
-                        num2 = num2.slice(0, (num2.length - 1));
-                        display = num1 + ' ' + operator + ' ' + num2;
-                        if (num2.length === 0) {
-                            counter2 = false;
-                        }
-                    }
-                    displayText.textContent = display;
-                }
-                else if (e.target.classList.contains('number') && counter1 === false) {
-                    counter2 = false;
-                    if (!num1.includes('.')) {;
-                        num1 = num1 + e.target.textContent;
-                    }
-                    else {
-                        if (e.target.textContent != '.') {
-                            num1 = num1 + e.target.textContent;
-                        }
-                    }
-                    display = num1 + ' ' + operator + ' ' + num2;
-                    displayText.textContent = display;
-                }
-                else if (e.target.classList.contains('operation')) {
-                    if (e.target.classList.contains('minus')) {
-                        if (num1.indexOf('-') > -1 && counter1 === false) {
-                            num1 = num1.replace('-', '');
-                        }
-                        else if (num1.indexOf('-') <= -1 && counter1 === false) {
-                            num1 = num1.replace('', '-');
-                        }
-
-                        if (num2.indexOf('-') > -1 && operator != '') {
-                            num2 = num2.replace('-', '');
-                        }
-
-                        else if (num2.indexOf('-') <= -1 && operator != '') {
-                            num2 = num2.replace('', '-');
-                        }
-                        display = num1 + ' ' + operator + ' ' + num2;
-                        displayText.textContent = display;
-                    }
-                    else {
-                        if (counter2 === false) {
-                            counter1 = true;
-                            if (e.target.classList.contains('power')) {
-                                operator = '^';
-                            }
-                            else {
-                                operator = e.target.textContent;
-                            }
-                            operation = e.target.value;
-                            display = num1 + ' ' + operator + ' ' + num2;
-                            displayText.textContent = display;
-                        }
-                        else if (counter2 == true && counter1 == true) {
-                            if (e.target.classList.contains('power')) {
-                                operator = '^';
-                            }
-                            else {
-                                operator = e.target.textContent;
-                            }
-                            num1 = operate(operation, operator, num1, num2);
-                            display = num1 + ' ' + operator;
-                            displayText.textContent = display;
-                            num2 = '';
-                            operation = e.target.value;
-                        }
-                    }
-                }
-                else if (e.target.classList.contains('number') && counter3 === false) {
-                    counter2 = true;
-                    if (!num2.includes('.')) {
-                        ;
-                        num2 = num2 + e.target.textContent;
-                    }
-                    else {
-                        if (e.target.textContent != '.') {
-                            num2 = num2 + e.target.textContent;
-                        }
-                    }
-                    display = num1 + ' ' + operator + ' ' + num2;
-                    displayText.textContent = display;
-                }
-                else if (e.target.classList.contains('calculate')) {
-                    num_check = operate(operation, operator, num1, num2);
-                    if (num_check === display) {
-                        counter1 = true;
-                        counter2 = false;
-                    }
-                    else {
-                        counter1 = counter2 = false;
-                        num1 = num_check;
-                        display = num1;
-                        displayText.textContent = display;
-                        operator = '';
-                        num2 = '';
-                    }
-                }
+                num1 = num1 + e.target.value;
             }
-        });    
-    });
+        }
+    }
+    else {
+        if (e.target.value === '.') {
+            if (!num2.includes('.')) {
+                num2 = num2 + e.target.value;
+            }
+        }
+        else {
+            if (num2.includes('-') && e.target.value === '-') {
+                num2 = num2.replace('-', '');
+            }
+            else if (!num2.includes('-') && e.target.value === '-') {
+                num2 = '-' + num2;
+            }
+            else {
+                num2 = num2 + e.target.value;
+            }
+        }
+    }
+}
+
+// Add operation to operation variable, calculate with operator if user wants to
+function addOperation(e) {
+    operationCalculation++;
+    if (operationCalculation === 2) {
+        calculate();
+        operationCalculation = 1;
+    }
+    if (e.target.value === '.') {
+        console.log('s');
+    }
+    operation = e.target.value;
+    operationDisplay = e.target.textContent;
+    console.log(operationCalculation);
+}
+
+// Do math calculation
+function calculate() {
+    numCheck = operate(num1, num2, operation, operationDisplay);
+    numCheck = numCheck.toString();
+    if (numCheck.includes(' ')) {
+        num2 = '';
+    }
+    else {
+        num1 = numCheck;
+        if (operationCalculation === 2) {
+            num2 = '';
+        }
+        else {
+            num2 = operation = operationDisplay = '';
+        }
+    }
 }
 
 // Calls appropriate math function
-function operate(operation, operator, num1, num2) {
+function operate(num1, num2, operation, operationSymbol) {
     let answer;
-    if (num1 === '' || num2 === '' || operator === '') {
-        answer = errorCheck(num1, num2, operator);
+    if (num1 === '' || num2 === '' || operationSymbol === '') {
+        answer = errorCheck(num1, num2, operationSymbol);
         return answer;
     }
     num1 = parseFloat(num1);
@@ -174,6 +162,12 @@ function operate(operation, operator, num1, num2) {
         answer = 'Error.';
     }
     return answer;
+}
+
+// Displays the math operation
+function display(num1, num2, operation) {
+    displayString = num1 + ' ' + operation + ' ' + num2;
+    displayText.textContent = displayString;
 }
 
 // Math functions
@@ -201,15 +195,15 @@ function divide(num1, num2) {
     return answer;
 }
 
-function errorCheck(num1, num2, operator) {
-    if (num1 === '' && num2 === '' && operator === '') {
+function errorCheck(num1, num2, operationSymbol) {
+    if (num1 === '' && num2 === '' && operationSymbol === '') {
         answer = '';
     }
-    else if (num2 === '' && operator === '') {
+    else if (num2 === '' && operationSymbol === '') {
         answer = num1;
     }
     else if (num2 === '') {
-        answer = num1 + ' ' + operator + ' ' + num2;
+        answer = num1 + ' ' + operationSymbol;
     }
     return answer;
 }
