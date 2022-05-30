@@ -112,11 +112,9 @@ function addOperation(e) {
         operationCalculation = 1;
     }
     if (e.target.value === '.') {
-        console.log('s');
     }
     operation = e.target.value;
     operationDisplay = e.target.textContent;
-    console.log(operationCalculation);
 }
 
 // Do math calculation
@@ -195,6 +193,7 @@ function divide(num1, num2) {
     return answer;
 }
 
+// Error check for 
 function errorCheck(num1, num2, operationSymbol) {
     if (num1 === '' && num2 === '' && operationSymbol === '') {
         answer = '';
