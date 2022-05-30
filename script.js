@@ -116,8 +116,10 @@ function addOperation(e) {
     }
     if (e.target.value === '.') {
     }
-    operation = e.target.value;
-    operationDisplay = e.target.textContent;
+    if (num1 != '') {
+        operation = e.target.value;
+        operationDisplay = e.target.textContent;
+    }
 }
 
 // Do math calculation
