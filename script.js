@@ -24,6 +24,9 @@ function buttonClicked() {
 
 // Go to appropriate function depending on type of button clicked
 function buttonsClicked(e) {
+    if (num1 === '-_- Really Bruh -_-') {
+        deleteAll();
+    } 
     if (e.target.classList.contains('delete-all')) {
         deleteAll();
     }
@@ -121,7 +124,12 @@ function addOperation(e) {
 function calculate() {
     numCheck = operate(num1, num2, operation, operationDisplay);
     numCheck = numCheck.toString();
-    if (numCheck.includes(' ')) {
+    if (numCheck === '-_- Really Bruh -_-') {
+        num1 = numCheck;
+        num2 = '';
+        operation = operationDisplay = '';
+    }
+    else if (numCheck.includes(' ')) {
         num2 = '';
     }
     else {
