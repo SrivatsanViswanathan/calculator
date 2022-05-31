@@ -1,7 +1,9 @@
 /* Global Variables */
 
+const calc = document.querySelector('.calculator');
 const button = document.querySelectorAll('.button');
-const displayText = document.querySelector('#display');
+const border = document.querySelector('.border');
+const displayText = document.querySelector('.text');
 const numbers = document.querySelectorAll('.number');
 const operations = document.querySelectorAll('.operation');
 
@@ -25,7 +27,10 @@ function buttonClicked() {
 // Go to appropriate function depending on type of button clicked
 function buttonsClicked(e) {
     if (num1 === '-_- Really Bruh -_-') {
-        deleteAll();
+        displayText.style.marginRight = '6%';
+        border.style.alignItems = 'flex-end';
+        border.style.justifyContent = 'right';
+        deleteAll();;
     } 
     if (e.target.classList.contains('delete-all')) {
         deleteAll();
@@ -127,6 +132,9 @@ function calculate() {
     numCheck = operate(num1, num2, operation, operationDisplay);
     numCheck = numCheck.toString();
     if (numCheck === '-_- Really Bruh -_-') {
+        displayText.style.marginRight = '0';
+        border.style.alignItems = 'center';
+        border.style.justifyContent = 'center';
         num1 = numCheck;
         num2 = '';
         operation = operationDisplay = '';
