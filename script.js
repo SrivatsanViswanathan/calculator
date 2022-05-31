@@ -28,6 +28,8 @@ function buttonClicked() {
 function buttonsClicked(e) {
     if (num1 === '-_- Really Bruh -_-') {
         displayText.style.marginRight = '6%';
+        displayText.style.marginLeft = '6%';
+        displayText.style.textAlign = 'right';
         border.style.alignItems = 'flex-end';
         border.style.justifyContent = 'right';
         deleteAll();;
@@ -133,6 +135,8 @@ function calculate() {
     numCheck = numCheck.toString();
     if (numCheck === '-_- Really Bruh -_-') {
         displayText.style.marginRight = '0';
+        displayText.style.marginLeft= '0';
+        displayText.style.textAlign = '';
         border.style.alignItems = 'center';
         border.style.justifyContent = 'center';
         num1 = numCheck;
